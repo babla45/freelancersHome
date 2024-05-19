@@ -50,14 +50,14 @@ class ListingController extends Controller
         return redirect('/')->with('message', 'Listing created successfully!');
     }
 
-    // Show Edit Form
+
     public function edit(Listing $listing) {
         return view('listings.edit', ['listing' => $listing]);
     }
 
     // Update Listing Data
     public function update(Request $request, Listing $listing) {
-        // Make sure logged in user is owner
+        // if logged in user is owner
         if($listing->user_id != auth()->id()) {
             abort(403, 'Unauthorized Action');
         }

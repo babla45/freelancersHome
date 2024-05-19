@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    // Show Register/Create Form
+    // Register/Create Form
     public function create() {
         return view('users.register');
     }
@@ -21,10 +21,10 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
-        // Hash Password
+        // Hashing
         $formFields['password'] = bcrypt($formFields['password']);
 
-        // Create User
+        //User create
         $user = User::create($formFields);
 
         // Login
@@ -44,7 +44,7 @@ class UserController extends Controller
 
     }
 
-    // Show Login Form
+    // Login Form show
     public function login() {
         return view('users.login');
     }
